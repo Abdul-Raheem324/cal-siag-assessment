@@ -299,9 +299,9 @@ export default function ActorsView({ actors, relations }) {
                 {/* Info */}
                 <div className="space-y-2">
                   {[
-                    { label: "Full Name", value: selected.full_name },
-                    { label: "Country", value: selected.country },
-                    { label: "Type", value: selected.actor_type },
+                    // { label: "Full Name", value: selected.full_name },
+                    // { label: "Country", value: selected.country },
+                    // { label: "Type", value: selected.actor_type },
                     { label: "Events", value: selected.event_count || 0 },
                   ].map((f) => (
                     <div

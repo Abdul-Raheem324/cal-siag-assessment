@@ -289,8 +289,8 @@ export default function ActorGraph({
           {/* Stats */}
           <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
             {[
-              ["Type", tip.actor.actor_type || "—"],
-              ["Country", tip.actor.country || "—"],
+              // ["Type", tip.actor.actor_type || "—"],
+              // ["Country", tip.actor.country || "—"],
               ["Events", tip.actor.event_count || 0],
             ].map(([k, v]) => (
               <div
@@ -313,7 +313,7 @@ export default function ActorGraph({
                 </span>
               </div>
             ))}
-            <div
+            {/* <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -330,7 +330,7 @@ export default function ActorGraph({
               >
                 {(tip.actor.threat_level || "unknown").toUpperCase()}
               </span>
-            </div>
+            </div> */}
           </div>
 
           {/* Small arrow pointing down toward the node */}
