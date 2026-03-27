@@ -1,26 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: 'Geist', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+
+  /* Backgrounds — lifted, more readable */
+  --color-canvas:        #0d1117;
+  --color-surface:       #171e2c;
+  --color-elevated:      #1f2840;
+  --color-overlay:       #263147;
+  --color-hover:         #2d3a55;
+
+  /* Borders — more visible */
+  --color-border:        #2e3d58;
+  --color-border-subtle: #212e45;
+
+  /* Text — bright & clear */
+  --color-text-primary:   #f1f5ff;
+  --color-text-secondary: #adbedd;
+  --color-text-muted:     #627a9e;
+  --color-text-disabled:  #2e3f5c;
+
+  /* Accent */
+  --color-accent:       #4d94ff;
+  --color-accent-hover: #6aaeff;
+
+  /* Status — vivid */
+  --color-danger:  #ff5370;
+  --color-warning: #ffaa3b;
+  --color-success: #2ecc8e;
+  --color-info:    #3ddcff;
+  --color-purple:  #b880ff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; } */
+
+html {
+  font-family: var(--font-sans);
+  background: var(--color-canvas);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2e3d58; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3e5070; }
+
+/* ══ KEYFRAMES ══ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+@keyframes barGrow {
+  from { width: 0; }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+@keyframes tabActive {
+  0%   { transform: translateY(0); }
+  35%  { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Utility classes */
+.animate-fade-in-up    { animation: fadeInUp    0.3s ease both; }
+.animate-fade-in-scale { animation: fadeInScale 0.25s ease both; }
+.animate-slide-in-left { animation: slideInLeft 0.28s ease both; }
+.animate-count-up      { animation: countUp     0.4s  ease both; }
+
+.stagger > *:nth-child(1) { animation-delay: 0.04s; }
+.stagger > *:nth-child(2) { animation-delay: 0.08s; }
+.stagger > *:nth-child(3) { animation-delay: 0.12s; }
+.stagger > *:nth-child(4) { animation-delay: 0.16s; }
+.stagger > *:nth-child(5) { animation-delay: 0.20s; }
+.stagger > *:nth-child(6) { animation-delay: 0.24s; }
+.stagger > *:nth-child(7) { animation-delay: 0.28s; }
+
+.skeleton {
+  background: linear-gradient(90deg, #1f2840 25%, #263147 50%, #1f2840 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.6s ease infinite;
+  border-radius: 12px;
+}
+
+.bar-fill { animation: barGrow 0.65s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+
+.glass {
+  background: rgba(23, 30, 44, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #4d94ff, #b880ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Mobile bottom tab bar safe area */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .tab-bar { padding-bottom: env(safe-area-inset-bottom); }
 }
