@@ -76,7 +76,7 @@ A lightweight intelligence dashboard for tracking conflict events related to the
 ### 2. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/osint-conflict-monitor.git
+git clone https://github.com/Abdul-Raheem324/cal-siag-assessment.git
 cd osint-conflict-monitor
 npm install
 ```
