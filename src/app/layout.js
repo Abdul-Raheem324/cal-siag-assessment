@@ -30,11 +30,11 @@
 // ─────────────────────────────────────────────
 // app/layout.js
 // ─────────────────────────────────────────────
-import './globals.css';
+import "./globals.css";
 
 export const metadata = {
-  title: 'SAIG · OSINT Conflict Monitor',
-  description: 'Iran–US–Israel conflict intelligence dashboard',
+  title: "SAIG · OSINT Conflict Monitor",
+  description: "Iran–US–Israel conflict intelligence dashboard",
 };
 
 export default function RootLayout({ children }) {
