@@ -59,8 +59,7 @@ export default function Dashboard() {
   const { relations } = useRelations();
 
   // Unfiltered events for summary/map
-  const { events: allEvents } = useEvents({});
-
+  const { events: allEvents } = useEvents({limit: total });
   // function patchFilters(patch) {
   //   setFilters(prev => ({ ...prev, ...patch }));
   // }
